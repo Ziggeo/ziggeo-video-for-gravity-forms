@@ -2,15 +2,16 @@
 
 GFForms::include_addon_framework();
 
-class Ziggeo_GFAddon extends GFAddOn {
+class Ziggeo_GF_ZiggeoTemplates_Addon extends GFAddOn {
 
 	protected $_version = 1.0;
 	protected $_min_gravityforms_version = '1.9';
 	protected $_slug = 'ziggeogravityforms';
 	protected $_path = 'ziggeo-video-for-gravity-forms/ziggeo-video-for-gravity-forms.php';
 	protected $_full_path = __FILE__;
-	protected $_title = 'Ziggeo Video Field';
-	protected $_short_title = 'Ziggeo Video Field';
+	protected $_title = 'Ziggeo Templates';
+	protected $_short_title = 'Ziggeo Templates';
+	protected $simple_type = 'ziggeotemplates';
 
 	private static $_instance = null;
 
@@ -28,9 +29,9 @@ class Ziggeo_GFAddon extends GFAddOn {
 
 		if($this->is_gravityforms_supported() && class_exists('GF_Field')) {
 			//We include our field codes
-			require_once('ziggeo-field.php');
+			require_once(ZIGGEOGRAVITYFORMS_ROOT_PATH . 'extend/ziggeo-templates.php');
 			//We register it
-			GF_Fields::register( new Ziggeo_GF_Field() );
+			GF_Fields::register( new Ziggeo_GF_ZiggeoTemplates() );
 		}
 	}
 
@@ -40,43 +41,36 @@ class Ziggeo_GFAddon extends GFAddOn {
 		//Handles tooltips on our fields
 		add_filter( 'gform_tooltips', array( $this, 'tooltips' ) );
 
-
-		add_action( 'gform_field_appearance_settings', array( $this, 'field_appearance_settings' ), 10, 2 );
+		add_action( 'gform_field_advanced_settings', array( $this, 'field_advanced_settings' ), 10, 2 );
 	}
 
-	//Add the custom setting for the Simple field to the Appearance tab.
-	public function field_appearance_settings( $position, $form_id ) {
-		// Add our custom setting just before the 'Custom CSS Class' setting.
-		if( $position == 250 ) {
-			?>
-			<li class="ziggeo_template_setting field_setting">
-				<label for="ziggeo_template_setting"><?php _e('Choose your template:', 'ziggeogravityforms'); ?>
-					<?php gform_tooltip( 'ziggeo_template_setting' ) ?>
-				</label>
-				<select id="ziggeo_template_setting" class="fieldwidth-1" onchange="ziggeo_integration_gravityforms_admin_select(this)">
-					<?php //fill out the templates ?>
-					<option disabled=disabled>Select a template</option>
+	public function field_advanced_settings( $position, $form_id ) {
+		if( $position == 250) {
 
-					<?php
+			echo '<li class="ziggeogravityforms_' . $this->simple_type . '_template_setting field_setting">
+				<label for="ziggeogravityforms_' . $this->simple_type . '_template_setting">' .
+				__('Choose your template', 'ziggeogravityforms') .
+					gform_tooltip( 'ziggeogravityforms_' . $this->simple_type . '_template_setting' ) .
+				'</label>
+				<select id="ziggeogravityforms_' . $this->simple_type . '_template_setting" class="fieldwidth-1" onchange="ziggeogravityformsTemplateSelect(this)">
+					<option disabled=disabled>Select a template</option>';
 					//index function changes " to ' to make sure that we do not have issues with TinyMCE, so we can use it here as well.
 					$list = ziggeo_p_templates_index();
 					if($list) {
 						foreach($list as $template => $value)
 						{
-							?><option value="<?php echo $template; ?>"><?php echo $template; ?></option><?php
+							echo '<option value="' . $template . '">' . $template . '</option>';
 						}
 					}
-					?>
-				</select>
-			</li>
-
-			<?php
+				echo '</select>
+				</li>';
 		}
 	}
 
+
 	//The tooltip that is shown on our field (in admin only)
 	public function tooltips( $tooltips ) {
-		$tooltips['ziggeo_template_setting'] = '<h6>' . __('Ziggeo Templates', 'ziggeogravityforms') . '</h6>' . __('Select the template in the dropdown best matching your requirements', 'ziggeogravityforms');
+		$tooltips['ziggeogravityforms_' . $this->simple_type . '_template_setting'] = '<h6>' . __('Template', 'ziggeogravityforms') . '</h6>' . __('Select the template that should be rendered in this location', 'ziggeogravityforms');
 		return $tooltips;
 	}
 
@@ -84,15 +78,8 @@ class Ziggeo_GFAddon extends GFAddOn {
 	public function scripts() {
 		//Only if this is preview will we add a script to the head
 		if($this->is_preview() || $this->is_form_editor()) {
+
 			$scripts = array(
-				array(
-					'handle'  => 'ziggeo-js', //Same as handle of our core so we do not add them 2 times
-					'src'     => 'https://assets-cdn.ziggeo.com/v1-stable/ziggeo.js',
-					'version' => $this->_version,
-					'enqueue' => array(
-						'field_types' => array('ZiggeoVideo')
-					)
-				),
 				//The WordPress core plugin admin file
 				array(
 					'handle'  => 'ziggeo-plugin-js',
@@ -118,14 +105,6 @@ class Ziggeo_GFAddon extends GFAddOn {
 		if($this->is_preview() || $this->is_form_editor()) { //needs a check for form editor / builder on some setups, as it does not post JS and CSS files
 			//We are in the preview page
 			$styles = array(
-				array(
-					'handle'  => 'ziggeo-css', //Same as handle of our core so we do not add them 2 times
-					'src'     => 'https://assets-cdn.ziggeo.com/v1-stable/ziggeo.css',
-					'version' => $this->_version,
-					'enqueue' => array(
-						'field_types' => array('ZiggeoVideo')
-					)
-				),
 				array(
 					'handle'  => 'ziggeo-styles-css',
 					'src'     => ZIGGEO_ROOT_URL . 'assets/css/styles.css',

@@ -1,41 +1,39 @@
+jQuery( document ).ready(function() {
+	//Handling video recorders
+	ziggeo_app.embed_events.on("verified", function (embedding_object) {
+		//lets get the embedding element
+		var embedding = embedding_object.activeElement();
 
-function ziggeo_integration_gravityforms_admin_select(sel) {
+		if(!ziggeogravityformsIsOfForm(embedding)) {
+			//Not to be handled by us
+			return false;
+		}
 
-	ziggeoDevReport('`ziggeo_integration_gravityforms_admin_select` is going to be renamed in next version of plugin. Write to us on forum if you are using it to stay updated.');
+		var element = document.getElementById( embedding.getAttribute('data-id') );
+		element.value = "[ziggeoplayer]" + embedding_object.get("video") + "[/ziggeoplayer]"
+	});
 
-	var field = document.getElementById('field_settings').parentElement.id;
-	field = field.replace('field_', 'input_');
+	//Handling video players
+	ziggeo_app.embed_events.on("ended", function (embedding_object) {
+		//lets get the embedding element
+		var embedding = embedding_object.activeElement();
 
-	//Lets grab the element that we will update..
-	var elem = document.getElementById(field);
+		if(!ziggeogravityformsIsOfForm(embedding)) {
+			//Not to be handled by us
+			return false;
+		}
 
-	//It should be ziggeo element, but just in case, better not to change the wrong element, than to do so
-	if(elem) {
-		elem.innerHTML = '<h3>Processing template</h3>'; //maybe replace this with graphical process bar
+		var element = document.getElementById( embedding.getAttribute('data-id') );
+		element.value = "Video was seen";
+	});
+});
 
-		var template = sel.options[sel.selectedIndex].value;
+// Just a simple function to check for signs of this embedding actually being part of Gravity Forms form
+function ziggeogravityformsIsOfForm(embedding) {
 
-		//Gravity Forms settings
-		Setziggeo_template_settingSetting(template);
-
-		//calling ajax request to get the right data..
-		ziggeoAjax({ integration: 'GravityForms', template: template },
-			function() {
-				elem.innerHTML = response;
-				if(elem.getElementsByClassName('runMe'))
-				{
-					var el = elem.getElementsByClassName('runMe');
-					var scr = document.createElement('script');
-
-					for(i = 0, c = el.length; i < c; i++) {
-						var tmp = el[i].innerHTML.toString().replace(/(\n)+/g, ' ').replace(/  +/g, ' ');
-						scr.innerHTML += tmp;
-					}
-					document.body.appendChild(scr);
-				}
-		});
+	if(embedding.getAttribute("data-is-gf")) {
+		return true;
 	}
-	else {
-		ziggeoDevReport('seems that something went wrong here..');
-	}
+
+	return false;
 }
