@@ -42,4 +42,32 @@ function ziggeogravityforms_include_assets($to_return, $additional) {
 }
 
 
+//Support for the no-conflict setup
+
+//Scripts
+add_filter( 'gform_noconflict_scripts', function($scripts) {
+	$scripts[] = 'ziggeo-js';
+	$scripts[] = 'ziggeo-plugin-js';
+	$scripts[] = 'ziggeo-admin-js';
+
+	$scripts[] = 'videowallsz-plugin-js';
+
+	$scripts[] = 'ziggeogravityforms-js';
+	$scripts[] = 'ziggeogravityforms-admin-js';
+
+	return $scripts;
+}, 50);
+
+//Styles
+add_filter( 'gform_noconflict_styles', function($styles) {
+	$styles[] = 'ziggeo-css';
+	$styles[] = 'ziggeo-styles-css';
+	$styles[] = 'ziggeo-admin-css';
+
+	$styles[] = 'videowallsz-styles-css';
+	$styles[] = 'videowallsz-admin-css';
+
+	return $styles;
+}, 50);
+
 ?>
