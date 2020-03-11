@@ -9,7 +9,7 @@ jQuery( document ).ready(function() {
 			return false;
 		}
 
-		var element = document.getElementById( embedding.getAttribute('data-id') );
+		var element = document.getElementById( embedding.getAttribute('data-id').trim() );
 		element.value = "[ziggeoplayer]" + embedding_object.get("video") + "[/ziggeoplayer]"
 	});
 
@@ -18,12 +18,16 @@ jQuery( document ).ready(function() {
 		//lets get the embedding element
 		var embedding = embedding_object.activeElement();
 
+		if(embedding.nodeName === "ZIGGEORECORDER") {
+			return false;
+		}
+
 		if(!ziggeogravityformsIsOfForm(embedding)) {
 			//Not to be handled by us
 			return false;
 		}
 
-		var element = document.getElementById( embedding.getAttribute('data-id') );
+		var element = document.getElementById( embedding.getAttribute('data-id').trim() );
 		element.value = "Video was seen";
 	});
 });

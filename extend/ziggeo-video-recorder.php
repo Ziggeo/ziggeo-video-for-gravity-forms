@@ -261,7 +261,7 @@ class Ziggeo_GF_VideoRecorder extends GF_Field {
 			$field .= '<input id="' . $field_id . '" type="hidden" value="' . $current_value . '" name="input_' . $id . '" >';
 
 			$field .= '<ziggeorecorder ' .
-							'data-id="' . $field_id . ' "' . ' data-is-gf="true" ' .
+							'data-id="' . $field_id . '"' . ' data-is-gf="true" ' .
 							'ziggeo-theme="' . $field_data['ziggeogravityforms_' . $this->simple_type . '_theme_setting'] . '" ' .
 							'ziggeo-themecolor="' . $field_data['ziggeogravityforms_' . $this->simple_type . '_themecolor_setting'] . '" ';
 			if($field_data['ziggeogravityforms_' . $this->simple_type . '_width_setting'] !== '') {
