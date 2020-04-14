@@ -1,4 +1,10 @@
 jQuery( document ).ready(function() {
+
+	//Check if the ziggeo_app was defined
+	if(typeof ziggeo_app === 'undefined') {
+		return false;
+	}
+
 	//Handling video recorders
 	ziggeo_app.embed_events.on("verified", function (embedding_object) {
 		//lets get the embedding element

@@ -3,7 +3,7 @@ Contributors: oliverfriedmann, baned, carloscsz409
 Tags: ziggeo, video, video field, gravity forms, video submission
 Requires at least: 3.0.1
 Tested up to: 5.3.2
-Stable tag: 1.4
+Stable tag: 1.5
 Requires PHP: 5.2.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -56,10 +56,13 @@ Please go to our [WordPress forum](https://support.ziggeo.com/hc/en-us/community
 
 == Upgrade Notice ==
 
-= 1.4 =
-Fixed an issue caused by the space character in video recorder.
+= 1.5 =
+Added a check to avoid error if the application token was not provided. It also helps if core plugin was not installed.
 
 == Changelog ==
+
+= 1.4 =
+Fixed an issue caused by the space character in video recorder.
 
 = 1.3 =
 Added support for No Conflict mode of Gravity Forms editor.
