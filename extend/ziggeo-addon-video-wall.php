@@ -36,6 +36,11 @@ class Ziggeo_GF_VideoWall_Addon extends GFAddOn {
 	}
 
 	public function init_admin() {
+
+		if(!defined('VIDEOWALLSZ_VERSION')) {
+			ziggeo_notification_create('Please install "VideoWalls for Ziggeo" to use VideoWall field. You can find it on: https://wordpress.org/plugins/videowalls-for-ziggeo/');
+		}
+
 		parent::init_admin();
 
 		//Handles tooltips on our fields

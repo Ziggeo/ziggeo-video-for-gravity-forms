@@ -75,7 +75,7 @@ defined('ABSPATH') or die();
 	//We add all of the hooks we need
 	function ziggeogravityforms_init() {
 
-		$options = get_option('ziggeogravityforms');
+		$options = ziggeogravityforms_get_plugin_options();
 
 		//Add our addon in such a way that it only runs if Gravity Forms was initiallized properly
 		//We need the addon framework to be available
@@ -93,29 +93,17 @@ defined('ABSPATH') or die();
 		include_once(ZIGGEOGRAVITYFORMS_ROOT_PATH . 'extend/ziggeo-addon-video-player.php');
 		GFAddOn::register( 'Ziggeo_GF_VideoPlayer_Addon' );
 
-		//Videowall is part of core plugin so will work as is, however in future versions we will need to:
-		//1. check the core plugin version to be over 2.0 and under the one where videowalls are removed.
-		//2. only be added if the videowalls plugin is installed and active.
-		include_once(ZIGGEOGRAVITYFORMS_ROOT_PATH . 'extend/ziggeo-addon-video-wall.php');
-		GFAddOn::register( 'Ziggeo_GF_VideoWall_Addon' );
-
 		include_once(ZIGGEOGRAVITYFORMS_ROOT_PATH . 'extend/ziggeo-addon-ziggeo-templates.php');
 		GFAddOn::register( 'Ziggeo_GF_ZiggeoTemplates_Addon' );
 
-		add_filter( 'gform_add_field_buttons', function($field_groups) {
+		//This will not work if the videowalls-for-ziggeo is not installed.
+		//Get from: https://wordpress.org/plugins/videowalls-for-ziggeo/
+		include_once(ZIGGEOGRAVITYFORMS_ROOT_PATH . 'extend/ziggeo-addon-video-wall.php');
+		GFAddOn::register( 'Ziggeo_GF_VideoWall_Addon' );
 
-			$field_groups[] = array( 'name' => 'ziggeo_fields', 'label' => __( 'Ziggeo Fields', 'ziggeowpforms' ), 'fields' => array(
-				array( 'class' => 'button', 'data-type' => 'ZiggeoVideoRecorder', 'value' => GFCommon::get_field_type_title( 'ZiggeoVideoRecorder' ) ),
-				array( 'class' => 'button', 'data-type' => 'ZiggeoVideoPlayer', 'value' => GFCommon::get_field_type_title( 'ZiggeoVideoPlayer' ) ),
-				array( 'class' => 'button', 'data-type' => 'ZiggeoVideoWall', 'value' => GFCommon::get_field_type_title( 'ZiggeoVideoWall' ) ),
-				array( 'class' => 'button', 'data-type' => 'ZiggeoTemplates', 'value' => GFCommon::get_field_type_title( 'ZiggeoTemplates' ) ),
-			));
-			return $field_groups;
-		} );
-
-		//Register the Addon class we included above
 
 		include_once(ZIGGEOGRAVITYFORMS_ROOT_PATH . 'core/assets.php');
+		include_once(ZIGGEOGRAVITYFORMS_ROOT_PATH . 'core/hooks.php');
 
 		/*add_action('gform_entry_detail_content_before', function($form, $lead) {
 

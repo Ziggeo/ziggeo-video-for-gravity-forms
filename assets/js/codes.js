@@ -16,7 +16,13 @@ jQuery( document ).ready(function() {
 		}
 
 		var element = document.getElementById( embedding.getAttribute('data-id').trim() );
-		element.value = "[ziggeoplayer]" + embedding_object.get("video") + "[/ziggeoplayer]"
+
+		if(ZiggeoWP && ZiggeoWP.gravity_forms) {
+			element.value = ZiggeoWP.gravity_forms.capture_format.replace('{token}', embedding_object.get("video"));
+		}
+		else {
+			element.value = "[ziggeoplayer]" + embedding_object.get("video") + "[/ziggeoplayer]"
+		}
 	});
 
 	//Handling video players

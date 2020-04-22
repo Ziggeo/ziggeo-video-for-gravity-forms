@@ -8,7 +8,7 @@ Requires PHP: 5.2.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-This plugin is providing an easy and simple way for you to add Ziggeo to your Gravity Forms forms through a special video field.
+This plugin is providing an easy and simple way for you to add Ziggeo to your Gravity Forms forms through special Ziggeo fields.
 
 = Who is this for? =
 
@@ -24,7 +24,13 @@ Bringing the power of Ziggeo to your forms you can be sure that your forms will 
 
 == Screenshots ==
 
-1. Admin options
+1. Dashboard Setting
+2. Ziggeo Fields
+3. Ziggeo Video Recorder Field
+4. Ziggeo Video Player Field
+5. Ziggeo VideoWall Field
+6. Ziggeo Templates Field
+7. How data is saved in entries (you pick format)
 
 == Installation ==
  
@@ -56,10 +62,15 @@ Please go to our [WordPress forum](https://support.ziggeo.com/hc/en-us/community
 
 == Upgrade Notice ==
 
-= 1.5 =
-Added a check to avoid error if the application token was not provided. It also helps if core plugin was not installed.
+= 1.6 =
+Added the option to select what type of value you want to get once the video is recorded, which is made available through dashboard page under Ziggeo Video > Ziggeo Video for Gravity Forms.
+Also added a filter to allow this to change this through your own code regardless of the setting
+Any time video is recorded it will add +1 new video in the video list
 
 == Changelog ==
+
+= 1.5 =
+Added a check to avoid error if the application token was not provided. It also helps if core plugin was not installed.
 
 = 1.4 =
 Fixed an issue caused by the space character in video recorder.
