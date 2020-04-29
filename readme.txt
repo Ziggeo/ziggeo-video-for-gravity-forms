@@ -3,7 +3,7 @@ Contributors: oliverfriedmann, baned, carloscsz409
 Tags: ziggeo, video, video field, gravity forms, video submission
 Requires at least: 3.0.1
 Tested up to: 5.3.2
-Stable tag: 1.5
+Stable tag: 1.7
 Requires PHP: 5.2.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -62,31 +62,34 @@ Please go to our [WordPress forum](https://support.ziggeo.com/hc/en-us/community
 
 == Upgrade Notice ==
 
-= 1.6 =
-Added the option to select what type of value you want to get once the video is recorded, which is made available through dashboard page under Ziggeo Video > Ziggeo Video for Gravity Forms.
-Also added a filter to allow this to change this through your own code regardless of the setting
-Any time video is recorded it will add +1 new video in the video list
+= 1.7 =
+* Fixed the issue with the templates parsing
 
 == Changelog ==
 
+= 1.6 =
+* Added the option to select what type of value you want to get once the video is recorded, which is made available through dashboard page under Ziggeo Video > Ziggeo Video for Gravity Forms.
+* Also added a filter to allow this to change this through your own code regardless of the setting
+* Any time video is recorded it will add +1 new video in the video list
+
 = 1.5 =
-Added a check to avoid error if the application token was not provided. It also helps if core plugin was not installed.
+* Added a check to avoid error if the application token was not provided. It also helps if core plugin was not installed.
 
 = 1.4 =
-Fixed an issue caused by the space character in video recorder.
+* Fixed an issue caused by the space character in video recorder.
 
 = 1.3 =
-Added support for No Conflict mode of Gravity Forms editor.
+* Added support for No Conflict mode of Gravity Forms editor.
 
 = 1.2. =
-Improved support for core plugin
-Field for templates have been modified to provide better support for all templates
-Additional fields have been added (Recorder, Player and VideoWalls)
-All buttons are now within Ziggeo fields group of fields
+* Improved support for core plugin
+* Field for templates have been modified to provide better support for all templates
+* Additional fields have been added (Recorder, Player and VideoWalls)
+* All buttons are now within Ziggeo fields group of fields
 
 = 1.1 =
-Upgrading versions
-Support for new Ziggeo core plugin (v2.0)
+* Upgrading versions
+* Support for new Ziggeo core plugin (v2.0)
 
 = 1.0 =
-Initial commit
+* Initial commit

@@ -42,7 +42,7 @@ class Ziggeo_GF_ZiggeoTemplates extends GF_Field {
 			'admin_label_setting',
 			'visibility_setting',
 			'conditional_logic_field_setting',
-			'ziggeogravityforms_' . $this->simple_type . '_template_setting' //Adds our own setting
+			'ziggeogravityforms_' . $this->simple_type . '_template_id_setting' //Adds our own setting=
 		);
 	}
 
@@ -62,7 +62,7 @@ class Ziggeo_GF_ZiggeoTemplates extends GF_Field {
 
 		$fields = array(
 			array(
-				'name'	=> 'ziggeogravityforms_' . $this->simple_type . '_template_setting',
+				'name'	=> 'ziggeogravityforms_' . $this->simple_type . '_template_id_setting',
 				'value'	=> '',
 				'type'	=> 'select'
 			)
@@ -112,8 +112,12 @@ class Ziggeo_GF_ZiggeoTemplates extends GF_Field {
 				$field .= '<p>' . 'they will be shown on page and preview' . '</p>';
 			}
 			else {
-				//Walls are processed on backend and entire code is placed on the front page, unlike the player and recorder which are processed by JavaScript.
-				$field .= ziggeo_p_content_filter('[ziggeo ' . $field_data['ziggeogravityforms_' . $this->simple_type . '_template_name_setting']);
+				if(ziggeo_p_template_exists($field_data['ziggeogravityforms_' . $this->simple_type . '_template_id_setting'])) {
+					$field .= ziggeo_p_content_filter(ziggeo_p_template_exists($field_data['ziggeogravityforms_' . $this->simple_type . '_template_id_setting']));
+				}
+				else {
+					$field .= ziggeo_p_content_filter('[ziggeo ' . $field_data['ziggeogravityforms_' . $this->simple_type . '_template_id_setting']);
+				}
 			}
 
 		$field .= '</div></div>';

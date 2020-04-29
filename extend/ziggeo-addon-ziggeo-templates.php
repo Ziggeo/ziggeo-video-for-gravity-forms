@@ -47,30 +47,26 @@ class Ziggeo_GF_ZiggeoTemplates_Addon extends GFAddOn {
 	public function field_advanced_settings( $position, $form_id ) {
 		if( $position == 250) {
 
-			echo '<li class="ziggeogravityforms_' . $this->simple_type . '_template_setting field_setting">
-				<label for="ziggeogravityforms_' . $this->simple_type . '_template_setting">' .
-				__('Choose your template', 'ziggeogravityforms') .
-					gform_tooltip( 'ziggeogravityforms_' . $this->simple_type . '_template_setting' ) .
-				'</label>
-				<select id="ziggeogravityforms_' . $this->simple_type . '_template_setting" class="fieldwidth-1" onchange="ziggeogravityformsTemplateSelect(this)">
-					<option disabled=disabled>Select a template</option>';
-					//index function changes " to ' to make sure that we do not have issues with TinyMCE, so we can use it here as well.
-					$list = ziggeo_p_templates_index();
-					if($list) {
-						foreach($list as $template => $value)
-						{
-							echo '<option value="' . $template . '">' . $template . '</option>';
-						}
-					}
-				echo '</select>
-				</li>';
+			$list = ziggeo_p_templates_index();
+			$_options = array();
+
+			if($list) {
+				foreach($list as $template => $value) {
+					$_options[] = $template;
+				}
+			}
+
+			ziggeogravityforms_create_builder_option_field('ziggeogravityforms_' . $this->simple_type . '_template_id_setting', __('Choose your template', 'ziggeogravityforms'), [
+				'html_type' 	=> 'select',
+				'options'		=> $_options
+			]);
 		}
 	}
 
 
 	//The tooltip that is shown on our field (in admin only)
 	public function tooltips( $tooltips ) {
-		$tooltips['ziggeogravityforms_' . $this->simple_type . '_template_setting'] = '<h6>' . __('Template', 'ziggeogravityforms') . '</h6>' . __('Select the template that should be rendered in this location', 'ziggeogravityforms');
+		$tooltips['ziggeogravityforms_' . $this->simple_type . '_template_setting_template_id_setting'] = '<h6>' . __('Template', 'ziggeogravityforms') . '</h6>' . __('Select the template that should be rendered in this location', 'ziggeogravityforms');
 		return $tooltips;
 	}
 
