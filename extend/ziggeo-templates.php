@@ -113,10 +113,17 @@ class Ziggeo_GF_ZiggeoTemplates extends GF_Field {
 			}
 			else {
 				if(ziggeo_p_template_exists($field_data['ziggeogravityforms_' . $this->simple_type . '_template_id_setting'])) {
-					$field .= ziggeo_p_content_filter(ziggeo_p_template_exists($field_data['ziggeogravityforms_' . $this->simple_type . '_template_id_setting']));
+
+					$_tmp_field = ziggeo_p_content_filter(ziggeo_p_template_exists($field_data['ziggeogravityforms_' . $this->simple_type . '_template_id_setting']));
+
+					$_slice_point = stripos($_tmp_field, ' ', stripos($_tmp_field, '<ziggeo'));
+					$_tmp_field = substr($_tmp_field, 0, $_slice_point) . ' data-id="' . $field_id . '"' .
+									' data-is-gf="true" ' . substr($_tmp_field, $_slice_point);
+
+					$field .= $_tmp_field;
 				}
 				else {
-					$field .= ziggeo_p_content_filter('[ziggeo ' . $field_data['ziggeogravityforms_' . $this->simple_type . '_template_id_setting']);
+					$field .= ziggeo_p_content_filter('[ziggeo data-is-gf="true" ' . $field_data['ziggeogravityforms_' . $this->simple_type . '_template_id_setting']);
 				}
 			}
 

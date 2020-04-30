@@ -62,10 +62,11 @@ Please go to our [WordPress forum](https://support.ziggeo.com/hc/en-us/community
 
 == Upgrade Notice ==
 
-= 1.7 =
-* Fixed the issue with the templates parsing
 
 == Changelog ==
+
+= 1.7.1 =
+* Fixed the issue with the templates submission where if you used recorder or player through a template you might not get the value in because of new validation that was added.
 
 = 1.6 =
 * Added the option to select what type of value you want to get once the video is recorded, which is made available through dashboard page under Ziggeo Video > Ziggeo Video for Gravity Forms.
