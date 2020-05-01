@@ -38,6 +38,11 @@ add_action('gform_preview_footer', function() {
 function ziggeogravityforms_include_assets($to_return, $additional) {
 	ziggeo_p_assets_global();
 	ziggeogravityforms_assets();
+
+	if(defined('VIDEOWALLSZ_VERSION')) {
+		videowallsz_p_assets_global();
+	}
+
 	return $to_return;
 }
 
