@@ -2,8 +2,8 @@
 Contributors: oliverfriedmann, baned, carloscsz409
 Tags: ziggeo, video, video field, gravity forms, video submission
 Requires at least: 3.0.1
-Tested up to: 5.4.1
-Stable tag: 1.7.2
+Tested up to: 5.4.2
+Stable tag: 1.8
 Requires PHP: 5.2.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -62,10 +62,14 @@ Please go to our [WordPress forum](https://support.ziggeo.com/hc/en-us/community
 
 == Upgrade Notice ==
 
-= 1.7.2 =
-* Fixed videowall assets loading
+= 1.8 =
+* Utilizing the function Ziggeo Core plugin provides to add the page as addon
+* Removed the notification that would be made each time you request the plugin and the Videowalls plugin is not installed or activated. Now fires only in editor. Also shows notice in the form builder that it is missing.
 
 == Changelog ==
+
+= 1.7.2 =
+* Fixed videowall assets loading
 
 = 1.7.1 =
 * Fixed the issue with the templates submission where if you used recorder or player through a template you might not get the value in because of new validation that was added.

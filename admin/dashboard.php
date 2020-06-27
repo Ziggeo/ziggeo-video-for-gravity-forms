@@ -41,15 +41,14 @@ defined('ABSPATH') or die();
 	});
 
 	add_action('admin_menu', function() {
-		add_submenu_page(
-			'ziggeo_video',						//parent slug
-			'Ziggeo Video for Gravity Forms',	//page title
-			'Ziggeo Video for Gravity Forms',	//menu title
-			'manage_options',					//min capability to view
-			'ziggeogravityforms',				//menu slug
-			'ziggeogravityforms_show_form'		//function
+		ziggeo_p_add_addon_submenu(array(
+			'page_title'	=> 'Ziggeo Video for Gravity Forms',	//page title
+			'menu_title'	=> 'Ziggeo Video for Gravity Forms',	//menu title
+			'capability'	=> 'manage_options',					//min capability to view
+			'slug'			=> 'ziggeogravityforms',				//menu slug
+			'callback'		=> 'ziggeogravityforms_show_form')		//function
 		);
-	});
+	}, 12);
 
 
 

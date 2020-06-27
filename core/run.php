@@ -22,9 +22,9 @@ defined('ABSPATH') or die();
 /////////////////////////////////////////////////
 
 	//Show the entry in the integrations panel
-	add_action('ziggeo_list_integration', function() {
+	add_filter('ziggeo_list_integration', function($integrations) {
 
-		$data = array(
+		$current = array(
 			//This section is related to the plugin that we are combining with the Ziggeo, not the plugin/module that does it
 			'integration_title'		=> 'Gravity Forms', //Name of the plugin
 			'integration_origin'	=> 'http://www.gravityforms.com/', //Where you can download it from
@@ -37,18 +37,21 @@ defined('ABSPATH') or die();
 			'status'				=> true, //Is it turned on or off?
 			'slug'					=> 'ziggeo-video-for-gravity-forms', //slug of the module
 			//URL to image (not path). Can be of the original plugin, or the bridge
-			'logo'					=> ZIGGEOGRAVITYFORMS_ROOT_URL . 'assets/images/logo.png'
+			'logo'					=> ZIGGEOGRAVITYFORMS_ROOT_URL . 'assets/images/logo.png',
+			'version'				=> ZIGGEOGRAVITYFORMS_VERSION
 		);
 
 		//Check current Ziggeo version
 		if(ziggeogravityforms_run() === true) {
-			$data['status'] = true;
+			$current['status'] = true;
 		}
 		else {
-			$data['status'] = false;
+			$current['status'] = false;
 		}
 
-		echo zigeo_integration_present_me($data);
+		$integrations[] = $current;
+
+		return $integrations;
 	});
 
 	//plugins_loaded is one hook too late for GravityForms to have the field present

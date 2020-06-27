@@ -175,8 +175,15 @@ class Ziggeo_GF_VideoWall extends GF_Field {
 			$field .= '<input id="' . $field_id . '" type="hidden" value="' . $current_value . '" name="input_' . $id . '" >';
 
 			if($is_form_editor) {
-				$field .= '<p>' . 'Video walls are not loaded within the editor' . '</p>';
-				$field .= '<p>' . 'they will be shown on page and preview' . '</p>';
+				if(defined('VIDEOWALLSZ_VERSION')) {
+					$field .= '<p>' . 'Video walls are not loaded within the editor' . '</p>';
+					$field .= '<p>' . 'they will be shown on page and preview' . '</p>';
+				}
+				else {
+					ziggeo_notification_create('Please install "VideoWalls for Ziggeo" to use VideoWall field. You can find it on: https://wordpress.org/plugins/videowalls-for-ziggeo/');
+					$field .= '<p>' . 'Video walls plugin does not seem to be installed.' . '</p>';
+					$field .= '<p>' . 'Please check Notifications under Ziggeo Video for more details' . '</p>';
+				}
 			}
 			else {
 				//Walls are processed on backend and entire code is placed on the front page, unlike the player and recorder which are processed by JavaScript.

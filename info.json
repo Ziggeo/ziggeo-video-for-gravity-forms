@@ -1,20 +1,20 @@
 {
 	"wp": {
 		"required": "3.0.1",
-		"tested": "5.4.1",
+		"tested": "5.4.2",
 		"repo_url": "",
 		"alternative_repo_url": "https://github.com/Ziggeo/ziggeo-video-for-gravity-forms"
 	},
 	"plugin": {
 		"name": "ziggeo-video-for-gravity-forms",
 		"title": "Ziggeo Video for Gravity Forms",
-		"version": "1.7.2",
+		"version": "1.8",
 		"author": "Ziggeo",
 		"logo": "https://raw.githubusercontent.com/Ziggeo/ziggeo-video-for-gravity-forms/master/assets/images/logo.png",
 		"contributors": "oliverfriedmann, baned, carloscsz409",
 		"tags": "ziggeo, video, video field, gravity forms, video submission",
 		"description": "This plugin is providing an easy and simple way for you to add Ziggeo to your Gravity Forms forms through special Ziggeo fields.",
-		"latest_update": "Videowall plugin support improvement for loading assets.",
+		"latest_update": "New addons integration update and minor fixes",
 		"info_url": "https://raw.githubusercontent.com/Ziggeo/ziggeo-video-for-gravity-forms/master/info.json",
 		"addon_url": "https://ziggeo.com/integrations/wordpress/gravityforms",
 		"docs_url": "https://ziggeo.com/docs/integrations/wordpress/gravity-forms"
