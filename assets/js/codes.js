@@ -18,10 +18,42 @@ jQuery( document ).ready(function() {
 		var element = document.getElementById( embedding.getAttribute('data-id').trim() );
 
 		if(ZiggeoWP && ZiggeoWP.gravity_forms) {
+			//Capture the video token
 			element.value = ZiggeoWP.gravity_forms.capture_format.replace('{token}', embedding_object.get("video"));
 		}
 		else {
+			//Capture the video token
 			element.value = "[ziggeoplayer]" + embedding_object.get("video") + "[/ziggeoplayer]"
+		}
+
+		//Get tags
+		var tags = embedding.getAttribute('data-custom-tags');
+
+		if(tags) {
+
+			var _tags = [];
+			tags = tags.split(',');
+
+			for(i = 0, c = tags.length; i < c; i++) {
+				try {
+					var value = document.getElementById(tags[i]).value;
+
+					if(value.trim() !== '') {
+						_tags.push(value);
+					}
+				}
+				catch(err) {
+					console.log(err);
+				}
+			}
+
+			if(_tags.length > 0) {
+				//Create tags for the video
+				ZiggeoApi.Videos.update(embedding_object.get("video"), {
+					tags: _tags
+				});
+			}
+
 		}
 	});
 

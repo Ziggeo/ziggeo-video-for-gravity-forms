@@ -1,5 +1,5 @@
 === Ziggeo Video for Gravity Forms ===
-Contributors: oliverfriedmann, baned, carloscsz409
+Contributors: oliverfriedmann, baned, carloscsz409, natashacalleia
 Tags: ziggeo, video, video field, gravity forms, video submission
 Requires at least: 3.0.1
 Tested up to: 5.4.2
@@ -62,11 +62,15 @@ Please go to our [WordPress forum](https://support.ziggeo.com/hc/en-us/community
 
 == Upgrade Notice ==
 
+= 1.9 =
+* Added the option to set tags to video based on other fields on form. The same happens once the video is verified.
+
+
+== Changelog ==
+
 = 1.8 =
 * Utilizing the function Ziggeo Core plugin provides to add the page as addon
 * Removed the notification that would be made each time you request the plugin and the Videowalls plugin is not installed or activated. Now fires only in editor. Also shows notice in the form builder that it is missing.
-
-== Changelog ==
 
 = 1.7.2 =
 * Fixed videowall assets loading

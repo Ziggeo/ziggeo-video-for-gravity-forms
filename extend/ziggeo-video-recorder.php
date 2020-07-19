@@ -65,7 +65,8 @@ class Ziggeo_GF_VideoRecorder extends GF_Field {
 			'ziggeogravityforms_' . $this->simple_type . '_mediatitle_setting',
 			'ziggeogravityforms_' . $this->simple_type . '_mediadescription_setting',
 			'ziggeogravityforms_' . $this->simple_type . '_mediatags_setting',
-			'ziggeogravityforms_' . $this->simple_type . '_mediacustomdata_setting'
+			'ziggeogravityforms_' . $this->simple_type . '_mediacustomdata_setting',
+			'ziggeogravityforms_' . $this->simple_type . '_gf_custom_tags_setting'
 		);
 	}
 
@@ -198,6 +199,11 @@ class Ziggeo_GF_VideoRecorder extends GF_Field {
 				'name'	=> 'ziggeogravityforms_' . $this->simple_type . '_mediacustomdata_setting',
 				'value'	=> '',
 				'type'	=> 'input'
+			),
+			array(
+				'name'	=> 'ziggeogravityforms_' . $this->simple_type . '_gf_custom_tags_setting',
+				'value'	=> '',
+				'type'	=> 'input'
 			)
 		);
 /*
@@ -254,6 +260,8 @@ class Ziggeo_GF_VideoRecorder extends GF_Field {
 		$invalid_attribute      = $this->failed_validation ? 'aria-invalid="true"' : 'aria-invalid="false"';
 		$disabled_text          = $is_form_editor ? 'disabled="disabled"' : '';
 
+		$field_custom_tags = $field_data['ziggeogravityforms_' . $this->simple_type . '_gf_custom_tags_setting'];
+
 		// Prepare the input tag for this field.
 		$field = '<div class="ginput_container ginput_container_' . $this->type . '">';
 		//we are adding id to div, so that it is available if needed for conditions and other things in GravityForms
@@ -262,6 +270,7 @@ class Ziggeo_GF_VideoRecorder extends GF_Field {
 
 			$field .= '<ziggeorecorder ' .
 							'data-id="' . $field_id . '"' . ' data-is-gf="true" ' .
+							'data-custom-tags="' . $field_custom_tags . '"' .
 							'ziggeo-theme="' . $field_data['ziggeogravityforms_' . $this->simple_type . '_theme_setting'] . '" ' .
 							'ziggeo-themecolor="' . $field_data['ziggeogravityforms_' . $this->simple_type . '_themecolor_setting'] . '" ';
 			if($field_data['ziggeogravityforms_' . $this->simple_type . '_width_setting'] !== '') {

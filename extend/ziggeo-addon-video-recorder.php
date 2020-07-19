@@ -215,6 +215,12 @@ class Ziggeo_GF_VideoRecorder_Addon extends GFAddOn {
 				'html_type' 	=> 'textarea',
 				'placeholder'	=> 'valid JSON DATA'
 			]);
+
+			//Custom Tags to be added
+			ziggeogravityforms_create_builder_option_field('ziggeogravityforms_' . $this->simple_type . '_gf_custom_tags_setting', __('Custom tags from fields', 'ziggeogravityforms'), [
+				'html_type' 	=> 'textarea',
+				'placeholder'	=> 'field_id,field_id2,field_idN'
+			]);
 		}
 	}
 
@@ -223,6 +229,7 @@ class Ziggeo_GF_VideoRecorder_Addon extends GFAddOn {
 	public function tooltips( $tooltips ) {
 		$tooltips['ziggeogravityforms_' . $this->simple_type . '_theme_setting'] = '<h6>' . __('Embedding Theme', 'ziggeogravityforms') . '</h6>' . __('Select the theme you would like to use', 'ziggeogravityforms');
 		$tooltips['ziggeogravityforms_' . $this->simple_type . '_themecolor_setting'] = '<h6>' . __('Embedding Theme Color', 'ziggeogravityforms') . '</h6>' . __('Select the theme color to be applied', 'ziggeogravityforms');
+		$tooltips['ziggeogravityforms_' . $this->simple_type . '_gf_custom_tags_setting'] = '<h6>' . __('Custom tags from fields data', 'ziggeogravityforms') . '</h6>' . __('Separate the ID of different fields on the form (even on the page outside of the form) with comma. These fields would then be used to make the video\'s tags.', 'ziggeogravityforms');
 		return $tooltips;
 	}
 
