@@ -64,7 +64,7 @@ Please go to our [WordPress forum](https://support.ziggeo.com/hc/en-us/community
 
 = 1.9 =
 * Added the option to set tags to video based on other fields on form. The same happens once the video is verified.
-
+* Added the check for the conditional logic so that notices are not outputted in cases when your server does not hide them (you should if not dev site ;) ).
 
 == Changelog ==
 
