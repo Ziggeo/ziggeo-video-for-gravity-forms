@@ -276,6 +276,17 @@ class Ziggeo_GF_VideoRecorder extends GF_Field {
 			if($field_data['ziggeogravityforms_' . $this->simple_type . '_width_setting'] !== '') {
 				$field .=	'ziggeo-width="' . $field_data['ziggeogravityforms_' . $this->simple_type . '_width_setting'] . '" ';
 			}
+
+			if($field_data['ziggeogravityforms_' . $this->simple_type . '_tags_setting'] !== '') {
+				$field .=	'ziggeo-tags="' . ziggeo_p_parse_custom_tags($field_data['ziggeogravityforms_' . $this->simple_type . '_tags_setting'], 'gravity_forms') . '" ';
+			}
+			else {
+				$current_user = ziggeo_p_get_current_user();
+				$c_user = ( $current_user->user_login == "" ) ? 'Guest' : $current_user->user_login;
+
+				$field .=	'ziggeo-tags="' . 'wordpress,gravity_forms,form_' . $form_id . ',' . $c_user . '" ';
+			}
+
 			if($field_data['ziggeogravityforms_' . $this->simple_type . '_height_setting'] !== '') {
 				$field .=	'ziggeo-height="' . $field_data['ziggeogravityforms_' . $this->simple_type . '_height_setting'] . '" ';
 			}

@@ -48,6 +48,11 @@ jQuery( document ).ready(function() {
 			}
 
 			if(_tags.length > 0) {
+
+				if(embedding_object.get('tags') !== '' && embedding_object.get('tags') !== null) {
+					_tags.concat(embedding_object.get('tags'));
+				}
+
 				//Create tags for the video
 				ZiggeoApi.Videos.update(embedding_object.get("video"), {
 					tags: _tags
