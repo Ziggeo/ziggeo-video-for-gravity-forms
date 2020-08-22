@@ -14,7 +14,7 @@
 		"contributors": "oliverfriedmann, baned, carloscsz409",
 		"tags": "ziggeo, video, video field, gravity forms, video submission",
 		"description": "This plugin is providing an easy and simple way for you to add Ziggeo to your Gravity Forms forms through special Ziggeo fields.",
-		"latest_update": "Added tags handling as well as parsing of predefined tags and tags based on other fields",
+		"highlight": "Added tags handling as well as parsing of predefined tags and tags based on other fields",
 		"info_url": "https://raw.githubusercontent.com/Ziggeo/ziggeo-video-for-gravity-forms/master/info.json",
 		"addon_url": "https://ziggeo.com/integrations/wordpress/gravityforms",
 		"docs_url": "https://ziggeo.com/docs/integrations/wordpress/gravity-forms"
