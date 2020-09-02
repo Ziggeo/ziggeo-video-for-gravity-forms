@@ -41,15 +41,26 @@ defined('ABSPATH') or die();
 	});
 
 	add_action('admin_menu', function() {
-		ziggeo_p_add_addon_submenu(array(
-			'page_title'	=> 'Ziggeo Video for Gravity Forms',	//page title
-			'menu_title'	=> 'Ziggeo Video for Gravity Forms',	//menu title
-			'capability'	=> 'manage_options',					//min capability to view
-			'slug'			=> 'ziggeogravityforms',				//menu slug
-			'callback'		=> 'ziggeogravityforms_show_form')		//function
-		);
-	}, 12);
+		if(function_exists('ziggeo_p_add_addon_submenu')) {
+			ziggeo_p_add_addon_submenu(array(
+				'page_title'    => 'Ziggeo Video for Gravity Forms',    //page title
+				'menu_title'    => 'Ziggeo Video for Gravity Forms',    //menu title
+				'capability'    => 'manage_options',                    //min capability to view
+				'slug'          => 'ziggeogravityforms',                //menu slug
+				'callback'      => 'ziggeogravityforms_show_form')      //function
+			);
+		}
+		else {
+			add_action( 'admin_notices', function() {
 
+				?>
+				<div class="error notice">
+					<p><?php _e( 'Please install <a href="https://wordpress.org/plugins/ziggeo/">Ziggeo plugin</a>. It is required for this plugin (Videowalls for Ziggeo) to work properly!', 'ziggeogravityforms' ); ?></p>
+				</div>
+				<?php
+			});
+		}
+	}, 12);
 
 
 
@@ -92,7 +103,7 @@ defined('ABSPATH') or die();
 					<option value="video_url" <?php ziggeo_echo_selected($option, 'video_url'); ?>>Video URL</option>
 					<option value="video_token" <?php ziggeo_echo_selected($option, 'video_token'); ?>>Video Token</option>
 				</select>
-				<label for="ziggeogravityforms_capture_content"><?php _e('Depending on your choice here you will change what is captured once the video is recorded'); ?></label>
+				<label for="ziggeogravityforms_capture_content"><?php _e('Depending on your choice here you will change what is captured once the video is recorded', 'ziggeogravityforms'); ?></label>
 				<?php
 			}
 
