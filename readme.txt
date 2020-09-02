@@ -67,6 +67,7 @@ Please go to our [WordPress forum](https://support.ziggeo.com/hc/en-us/community
 * Added the check for the conditional logic so that notices are not outputted in cases when your server does not hide them (you should if not dev site ;) ).
 * Improvement: API calls are now using V2 flavor.
 * Improvement: Submenu calls are now checking if core plugin is relatively fresh and available to support the call. otherwise it does not use it.
+* Improvement: Added a check when the plugin is loading to see if core plugin is available or not. Instead of skipping loading silently, we now show a warning about this in admin dashboard.
 
 == Changelog ==
 

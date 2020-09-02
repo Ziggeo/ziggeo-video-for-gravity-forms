@@ -33,10 +33,10 @@ defined('ABSPATH') or die();
 
 			// The type of data that is captured once the video is recorded
 			add_settings_field('ziggeogravityforms_captured_content',
-								__('Choose the data that is saved once video is recorded', 'ziggeogravityforms'),
-								'ziggeogravityforms_g_captured_content',
-								'ziggeogravityforms',
-								'ziggeogravityforms_section_hooks');
+			                    __('Choose the data that is saved once video is recorded', 'ziggeogravityforms'),
+			                    'ziggeogravityforms_g_captured_content',
+			                    'ziggeogravityforms',
+			                    'ziggeogravityforms_section_hooks');
 
 	});
 
@@ -52,10 +52,9 @@ defined('ABSPATH') or die();
 		}
 		else {
 			add_action( 'admin_notices', function() {
-
 				?>
 				<div class="error notice">
-					<p><?php _e( 'Please install <a href="https://wordpress.org/plugins/ziggeo/">Ziggeo plugin</a>. It is required for this plugin (Videowalls for Ziggeo) to work properly!', 'ziggeogravityforms' ); ?></p>
+					<p><?php _e( 'Please install <a href="https://wordpress.org/plugins/ziggeo/">Ziggeo plugin</a>. It is required for this plugin (Ziggeo Video for Gravity Forms) to work properly!', 'ziggeogravityforms' ); ?></p>
 				</div>
 				<?php
 			});

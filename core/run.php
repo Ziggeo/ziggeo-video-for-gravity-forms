@@ -129,6 +129,14 @@ defined('ABSPATH') or die();
 
 		//Needed during activation of the plugin
 		if(!function_exists('ziggeo_get_version')) {
+			add_action( 'admin_notices', function() {
+				?>
+				<div class="error notice">
+					<p><?php _e( 'Please install <a href="https://wordpress.org/plugins/ziggeo/">Ziggeo plugin</a>. It is required for this plugin (Ziggeo Video for Gravity Forms) to work properly!', 'ziggeogravityforms' ); ?></p>
+				</div>
+				<?php
+			});
+
 			return false;
 		}
 
