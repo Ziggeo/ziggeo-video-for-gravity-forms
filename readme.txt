@@ -3,7 +3,7 @@ Contributors: oliverfriedmann, baned, carloscsz409, natashacalleia
 Tags: ziggeo, video, video field, gravity forms, video submission
 Requires at least: 3.0.1
 Tested up to: 5.4.2
-Stable tag: 1.8
+Stable tag: 1.9
 Requires PHP: 5.2.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -65,6 +65,7 @@ Please go to our [WordPress forum](https://support.ziggeo.com/hc/en-us/community
 = 1.9 =
 * Added the option to set tags to video based on other fields on form. The same happens once the video is verified.
 * Added the check for the conditional logic so that notices are not outputted in cases when your server does not hide them (you should if not dev site ;) ).
+* Improvement: API calls are now using V2 flavor.
 
 == Changelog ==
 

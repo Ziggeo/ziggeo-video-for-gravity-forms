@@ -54,9 +54,7 @@ jQuery( document ).ready(function() {
 				}
 
 				//Create tags for the video
-				ZiggeoApi.Videos.update(embedding_object.get("video"), {
-					tags: _tags
-				});
+				ziggeo_app.videos.update(data.embedding_object.get("video"), { tags: _tags });
 			}
 
 		}
