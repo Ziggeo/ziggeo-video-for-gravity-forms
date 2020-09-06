@@ -3,7 +3,7 @@ Contributors: oliverfriedmann, baned, carloscsz409, natashacalleia
 Tags: ziggeo, video, video field, gravity forms, video submission
 Requires at least: 3.0.1
 Tested up to: 5.4.2
-Stable tag: 1.9
+Stable tag: 1.10
 Requires PHP: 5.2.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -51,6 +51,27 @@ Depending on the template you can capture screen or camera or both at the same t
 
 This plugin will add the code that works in the back. It uses Gravity Forms Addon framework to bring you the addon. This addon then adds the field that you will see in the Gravity Form.
 
+= How to use Dynamic Custom Data =
+
+Ziggeo internally supports the ability of adding custom data to your videos. This can be anything as long as it is provided as valid JSON field. Now with form builders you might want to add custom data based on the data in the fields as well. To do this, we bring you dynamic custom data field.
+
+* Please note that this field should not be used in combination with the custom data. You should use either `Custom Data` or `Dynamic Custom Data`.
+
+The way you would set it up is by using key:field_id. For example if you want your JSON to be formed as:
+
+[javascript]
+{
+	"first_name": "Mike",
+	"last_name": "Wazowski"
+}
+[/javascript]
+
+and let's say that your first name has `<input id="input_1_2" ...>` and last name has `<input id="input_1_3" ...>`. It means that we need `input_1_2` and `input_1_3` to get those values. So our field can be set as:
+
+`first_name:input_1_2,last_name:input_1_3`
+
+As you save your recorder field it will remember this and try to find the values. If the fields with ID are not found, the value will be saved as "" (empty string)
+
 = How can I get some support =
 
 We provide active support to all that have any questions or need any assistance with our plugin or our service.
@@ -62,14 +83,18 @@ Please go to our [WordPress forum](https://support.ziggeo.com/hc/en-us/community
 
 == Upgrade Notice ==
 
+= 1.10 =
+* Added: Hooks for verified event
+* Added: Dynamic custom data support, allowing you to create custom data based on the fields on your Gravity Forms form.
+
+== Changelog ==
+
 = 1.9 =
 * Added the option to set tags to video based on other fields on form. The same happens once the video is verified.
 * Added the check for the conditional logic so that notices are not outputted in cases when your server does not hide them (you should if not dev site ;) ).
 * Improvement: API calls are now using V2 flavor.
 * Improvement: Submenu calls are now checking if core plugin is relatively fresh and available to support the call. otherwise it does not use it.
 * Improvement: Added a check when the plugin is loading to see if core plugin is available or not. Instead of skipping loading silently, we now show a warning about this in admin dashboard.
-
-== Changelog ==
 
 = 1.8 =
 * Utilizing the function Ziggeo Core plugin provides to add the page as addon

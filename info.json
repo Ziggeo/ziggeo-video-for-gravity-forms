@@ -8,7 +8,7 @@
 	"plugin": {
 		"name": "ziggeo-video-for-gravity-forms",
 		"title": "Ziggeo Video for Gravity Forms",
-		"version": "1.9",
+		"version": "1.10",
 		"author": "Ziggeo",
 		"logo": "https://raw.githubusercontent.com/Ziggeo/ziggeo-video-for-gravity-forms/master/assets/images/logo.png",
 		"contributors": "oliverfriedmann, baned, carloscsz409",

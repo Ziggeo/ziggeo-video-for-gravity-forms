@@ -66,7 +66,8 @@ class Ziggeo_GF_VideoRecorder extends GF_Field {
 			'ziggeogravityforms_' . $this->simple_type . '_mediadescription_setting',
 			'ziggeogravityforms_' . $this->simple_type . '_mediatags_setting',
 			'ziggeogravityforms_' . $this->simple_type . '_mediacustomdata_setting',
-			'ziggeogravityforms_' . $this->simple_type . '_gf_custom_tags_setting'
+			'ziggeogravityforms_' . $this->simple_type . '_gf_custom_tags_setting',
+			'ziggeogravityforms_' . $this->simple_type . '_gf_custom_data_setting'
 		);
 	}
 
@@ -204,27 +205,13 @@ class Ziggeo_GF_VideoRecorder extends GF_Field {
 				'name'	=> 'ziggeogravityforms_' . $this->simple_type . '_gf_custom_tags_setting',
 				'value'	=> '',
 				'type'	=> 'input'
+			),
+			array(
+				'name'	=> 'ziggeogravityforms_' . $this->simple_type . '_gf_custom_data_setting',
+				'value'	=> '',
+				'type'	=> 'input'
 			)
 		);
-/*
-		$c = count($fields);
-		// initialize the fields custom settings
-		$script .= 'jQuery(document).bind("gform_load_field_settings", function (event, field, form) {';
-
-		for($i = 0; $i < $c; $i++ ) {
-			$script .= 'var ' . $fields[$i]['name'] .' = (field.' . $fields[$i]['name'] . ' == undefined) ? "" : field.' . $fields[$i]['name'] . ';';
-
-			if($fields[$i]['type'] === 'checkbox') {
-				//$fields[$i]['name'] = $fields[$i]['name'] because we now have a JS variable with that name
-				$script .= 'jQuery("#' . $fields[$i]['name'] . '")[0].checked = ' . $fields[$i]['name'] . ';';
-			}
-			else {
-				$script .= 'jQuery("#' . $fields[$i]['name'] . '").val(' . $fields[$i]['name'] . ');';
-			}
-		}
-
-		$script .= '});';
-*/
 
 		$script .= ziggeogravityforms_create_builder_option_scripts($fields, $script);
 
@@ -261,6 +248,7 @@ class Ziggeo_GF_VideoRecorder extends GF_Field {
 		$disabled_text          = $is_form_editor ? 'disabled="disabled"' : '';
 
 		$field_custom_tags = $field_data['ziggeogravityforms_' . $this->simple_type . '_gf_custom_tags_setting'];
+		$field_custom_data = $field_data['ziggeogravityforms_' . $this->simple_type . '_gf_custom_data_setting'];
 
 		// Prepare the input tag for this field.
 		$field = '<div class="ginput_container ginput_container_' . $this->type . '">';
@@ -271,6 +259,7 @@ class Ziggeo_GF_VideoRecorder extends GF_Field {
 			$field .= '<ziggeorecorder ' .
 							'data-id="' . $field_id . '"' . ' data-is-gf="true" ' .
 							'data-custom-tags="' . $field_custom_tags . '"' .
+							'data-custom-data="' . $field_custom_data . '"' .
 							'ziggeo-theme="' . $field_data['ziggeogravityforms_' . $this->simple_type . '_theme_setting'] . '" ' .
 							'ziggeo-themecolor="' . $field_data['ziggeogravityforms_' . $this->simple_type . '_themecolor_setting'] . '" ';
 			if($field_data['ziggeogravityforms_' . $this->simple_type . '_width_setting'] !== '') {

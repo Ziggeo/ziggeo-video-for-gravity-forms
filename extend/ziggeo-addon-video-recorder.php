@@ -221,6 +221,12 @@ class Ziggeo_GF_VideoRecorder_Addon extends GFAddOn {
 				'html_type' 	=> 'textarea',
 				'placeholder'	=> 'field_id,field_id2,field_idN'
 			]);
+
+			//Custom Tags to be added
+			ziggeogravityforms_create_builder_option_field('ziggeogravityforms_' . $this->simple_type . '_gf_custom_data_setting', __('Custom data from fields', 'ziggeogravityforms'), [
+				'html_type' 	=> 'textarea',
+				'placeholder'	=> 'field_key:field_element_id,field_keyN:field_element_idN'
+			]);
 		}
 	}
 
