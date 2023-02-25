@@ -172,6 +172,25 @@ class Ziggeo_GF_VideoPlayer_Addon extends GFAddOn {
 				)
 			);
 
+			// Support for Lazyload
+			$lazy_load = ziggeo_get_plugin_options('lazy_load');
+			if($lazy_load === ZIGGEO_YES) {
+
+				// To include the header info
+				ziggeo_p_page_header();
+
+				// Support for Lazyload
+				if(!defined('ZIGGEO_FOUND')) {
+					define('ZIGGEO_FOUND', true);
+				}
+
+				echo ziggeo_p_get_lazyload_activator();
+
+				if(!defined('ZIGGEO_FOUND_POST')) {
+					define('ZIGGEO_FOUND_POST', true);
+				}
+			}
+
 			//return the combined scripts of the ones that did exist and the ones we added above
 			return array_merge( parent::scripts(), $scripts );
 		}

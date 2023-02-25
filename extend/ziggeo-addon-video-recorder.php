@@ -256,6 +256,25 @@ class Ziggeo_GF_VideoRecorder_Addon extends GFAddOn {
 				)
 			);
 
+			// Support for Lazyload
+			$lazy_load = ziggeo_get_plugin_options('lazy_load');
+			if($lazy_load === ZIGGEO_YES) {
+
+				// To include the header info
+				ziggeo_p_page_header();
+
+				// Support for Lazyload
+				if(!defined('ZIGGEO_FOUND')) {
+					define('ZIGGEO_FOUND', true);
+				}
+
+				echo ziggeo_p_get_lazyload_activator();
+
+				if(!defined('ZIGGEO_FOUND_POST')) {
+					define('ZIGGEO_FOUND_POST', true);
+				}
+			}
+
 			//return the combined scripts of the ones that did exist and the ones we added above
 			return array_merge( parent::scripts(), $scripts );
 		}
@@ -279,6 +298,28 @@ class Ziggeo_GF_VideoRecorder_Addon extends GFAddOn {
 					)
 				)
 			);
+
+			$styles = ziggeo_p_assets_get_raw();
+
+			// Support for Lazyload
+			$lazy_load = ziggeo_get_plugin_options('lazy_load');
+			if($lazy_load === ZIGGEO_YES) {
+
+				foreach($styles as $ref => $style) {
+					if(isset($style['css']) && strpos($style['css'], 'ziggeo.com') > -1) {
+						$_load_style = $style['css'];
+					}
+				}
+
+				$styles[] = array(
+					'handle'  => 'ziggeo-css',
+					'src'     => $_load_style,
+					'version' => $this->_version,
+					'enqueue' => array(
+						'field_types' => array('ZiggeoVideo')
+					)
+				);
+			}
 
 			return array_merge( parent::styles(), $styles );            
 		}

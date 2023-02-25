@@ -2,8 +2,8 @@
 Contributors: oliverfriedmann, baned, carloscsz409, natashacalleia
 Tags: ziggeo, video, video field, gravity forms, video submission
 Requires at least: 3.0.1
-Tested up to: 5.8.3
-Stable tag: 1.10
+Tested up to: 6.1.1
+Stable tag: 1.11
 Requires PHP: 5.2.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -83,11 +83,15 @@ Please go to our [WordPress forum](https://support.ziggeo.com/hc/en-us/community
 
 == Upgrade Notice ==
 
+= 1.11 =
+* Added: Added support for WP Core plugin Lazyload feature
+* Improvement: Removed dependency on jQuery which could lead to console error in the preview page
+
+== Changelog ==
+
 = 1.10 =
 * Added: Hooks for verified event
 * Added: Dynamic custom data support, allowing you to create custom data based on the fields on your Gravity Forms form.
-
-== Changelog ==
 
 = 1.9 =
 * Added the option to set tags to video based on other fields on form. The same happens once the video is verified.

@@ -23,7 +23,7 @@ function ziggeogravityforms_create_builder_option_field($id, $label, $field_info
 				?>
 				<input id="<?php echo $id; ?>"
 						type="<?php echo $field_info['type']; ?>"
-						placeholder="<?php echo $field_info['placeholder']; ?>"
+						placeholder="<?php echo isset($field_info['placeholder']) ? $field_info['placeholder'] : ''; ?>"
 						onclick="ziggeogravityformsOptionCheckbox(this);"
 						onkeypress="ziggeogravityformsOptionCheckbox(this);"
 						>

@@ -2,7 +2,7 @@
 // INDEX
 //********
 // 1. Helper functions
-//		* jQuery.ready()
+//		* onload
 //		* ziggeogravityformsIsOfForm()
 // 2. Ziggeo Hooks
 //		* ziggeofluentformsSaveToken()
@@ -14,7 +14,8 @@
 // 1. HELPER FUNCTIONS                         //
 /////////////////////////////////////////////////
 
-	jQuery( document ).ready(function() {
+	
+	window.addEventListener('load', function() {
 
 		//Check if the ziggeo_app was defined
 		if(typeof ziggeo_app === 'undefined') {
