@@ -120,4 +120,41 @@ function ziggeogravityforms_get_plugin_options($specific = null) {
 	return false;
 }
 
+// A helper function for the plugin when the lazy load is used
+function ziggeogravityforms_lazyload_support() {
+
+	$result = '<!--
+					ziggeo-info: Lazyload was not processed.
+				-->';
+
+	if(!defined('ZIGGEO_FOUND_POST')) {
+
+		if(!defined('ZIGGEO_FOUND')) {
+			define('ZIGGEO_FOUND', true);
+		}
+
+		$lazy_load = ziggeo_get_plugin_options('lazy_load');
+
+		if($lazy_load === ZIGGEO_YES) {
+			// To include the header info
+			ziggeo_p_page_header();
+
+			$result = ziggeo_p_get_lazyload_activator();
+
+			// We check it again here
+			if(!defined('ZIGGEO_FOUND_POST')) {
+				define('ZIGGEO_FOUND_POST', true);
+			}
+		}
+		else {
+			$result = '<!--
+				ziggeo-info: Ziggeo Core plugin does not have lazyload option
+				reason: Lazyload was introduced into Ziggeo Core plugin in version 3.0
+				solution: This is OK. Since the lazyload was not present in earlier versions no additional output is required
+			-->';
+		}
+	}
+
+	return $result;
+}
 ?>

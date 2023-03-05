@@ -4,7 +4,7 @@ Plugin Name: Ziggeo Video for Gravity Forms
 Plugin URI: https://ziggeo.com/integrations/wordpress
 Description: Add the Powerful Ziggeo video service platform to your Gravity Forms
 Author: Ziggeo
-Version: 1.11
+Version: 1.12
 Author URI: https://ziggeo.com
 */
 
@@ -19,7 +19,7 @@ define('ZIGGEOGRAVITYFORMS_ROOT_PATH', plugin_dir_path(__FILE__) );
 define('ZIGGEOGRAVITYFORMS_ROOT_URL', plugins_url('', __FILE__) . '/');
 
 //plugin version - this way other plugins can get it as well and we will be updating this file for each version change as is
-define('ZIGGEOGRAVITYFORMS_VERSION', '1.11');
+define('ZIGGEOGRAVITYFORMS_VERSION', '1.12');
 
 //Include files
 include_once(ZIGGEOGRAVITYFORMS_ROOT_PATH . 'core/simplifiers.php');
