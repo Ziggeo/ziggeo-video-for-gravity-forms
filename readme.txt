@@ -1,5 +1,5 @@
 === Ziggeo Video for Gravity Forms ===
-Contributors: oliverfriedmann, baned, carloscsz409, natashacalleia
+Contributors: oliverfriedmann, baned
 Tags: ziggeo, video, video field, gravity forms, video submission
 Requires at least: 3.0.1
 Tested up to: 6.7.2
