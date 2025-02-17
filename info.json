@@ -1,7 +1,7 @@
 {
 	"wp": {
 		"required": "3.0.1",
-		"tested": "6.2",
+		"tested": "6.7.2",
 		"repo_url": "",
 		"alternative_repo_url": "https://github.com/Ziggeo/ziggeo-video-for-gravity-forms"
 	},

@@ -2,7 +2,7 @@
 Contributors: oliverfriedmann, baned, carloscsz409, natashacalleia
 Tags: ziggeo, video, video field, gravity forms, video submission
 Requires at least: 3.0.1
-Tested up to: 6.2
+Tested up to: 6.7.2
 Stable tag: 1.12
 Requires PHP: 5.2.4
 License: GPLv3 or later
