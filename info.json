@@ -1,7 +1,7 @@
 {
 	"wp": {
-		"required": "3.0.1",
-		"tested": "6.7.2",
+		"required": "6.9",
+		"tested": "6.9.4",
 		"repo_url": "",
 		"alternative_repo_url": "https://github.com/Ziggeo/ziggeo-video-for-gravity-forms"
 	},
@@ -26,8 +26,8 @@
 		"license_url": "http://www.gnu.org/licenses/gpl-2.0.html"
 	},
 	"php": {
-		"min": "5.2.4",
-		"php5_support": true,
+		"min": "8.4",
+		"php5_support": false,
 		"php7_support": true
 	}
 }
